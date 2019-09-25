@@ -31,7 +31,7 @@ class FeedsModelTests: XCTestCase {
         }
         ParserHelper.parse(data: data, completion: completion)
     }
-    
+
     func testParseFeedsResult() {
         let data = MockData().getFactsData()
         let completion: ((Result<FeedsModel, ErrorResult>) -> Void) = { result in
@@ -42,7 +42,7 @@ class FeedsModelTests: XCTestCase {
                 XCTAssertEqual(response.title, "About Canada", "Expected About Canada base")
                 if let list = response.rows {
                     XCTAssertEqual(list.count, 14, "Expected 14 rates")
-                    
+
                 } else {
                     XCTAssert(false, "Expected valid ListModel")
                 }
@@ -50,7 +50,7 @@ class FeedsModelTests: XCTestCase {
         }
         ParserHelper.parse(data: data, completion: completion)
     }
-    
+
     func testWrongKeyFeedsResult() {
         let data = Data()
         let result = FeedsModel.parseObject(data: data)

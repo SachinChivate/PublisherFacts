@@ -12,15 +12,16 @@ class FeedsViewModel: FeedsViewModelProtocol {
     //Input
     private var service: FeedsServiceProtocol?
     weak var dataSource: GenericDataSource<ListModel>?
-    
+
     //Output
     var cellDidSelect: GenericDataSource<Int>?
-    var title: String?
+    var title: Dynamic<String>
     var selectedData: ListModel?
 
     init(withService service: FeedsServiceProtocol, withDataSource dataSource: GenericDataSource<ListModel>?) {
         self.dataSource = dataSource
         self.service = service
+        self.title = Dynamic("")
     }
 
     func fetchServiceCall(_ completion: ((Result<Bool, ErrorResult>) -> Void)? = nil) {
@@ -38,7 +39,7 @@ class FeedsViewModel: FeedsViewModelProtocol {
                         let title = converter.title
                     {
                         self.dataSource?.data.value = rows
-                        self.title = title
+                        self.title.value = title
                         completion?(Result.success(true))
                     } else {
                         completion?(Result.failure(.custom(string: "Error while parsing json data")))
