@@ -55,4 +55,3 @@ class FeedsDataSourceTests: XCTestCase {
         }
     }
 }
-

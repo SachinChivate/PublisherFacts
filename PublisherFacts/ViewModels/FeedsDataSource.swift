@@ -23,7 +23,7 @@ class FeedsDataSource: GenericDataSource<ListModel>, UICollectionViewDataSource 
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! CollectionViewCell
+        let cell: CollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
         let feedsValue = self.data.value[indexPath.row]
         cell.feedsValue = feedsValue
         guard let imageUrl = feedsValue.imageHref else {

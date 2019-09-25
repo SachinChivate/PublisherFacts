@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-public protocol ImageSession: class {
+protocol ImageHelperProtocol {
     func updateImageForTableViewCell(_ cell: UITableViewCell, inTableView tableView: UITableView, imageURL: String, atIndexPath indexPath: IndexPath)
     func updateImageForCollectionViewCell(_ cell: UICollectionViewCell, inCollectionView collectionView: UICollectionView, imageURL: String, atIndexPath indexPath: IndexPath)
 
 }
 
-class ImageHelper: ImageSession {
+class ImageHelper: ImageHelperProtocol {
     fileprivate let kLazyLoadCellImageViewTag = 1
     fileprivate let kLazyLoadPlaceholderImage = UIImage(named: "placeholder")!
     var imageManager: ImageManager { return ImageManager() }
